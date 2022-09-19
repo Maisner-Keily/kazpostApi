@@ -8,45 +8,44 @@ app.debug = False
 
 @app.route('/api/getDeliveryTarivInfo', methods=['GET', 'POST'])
 def index():
-    print(request.data.decode("utf-8"))
-    return 'ok'
-    sndrCtg = request.content.sndrCtg
-    product = request.content.product
-    mailCat = request.content.mailCat
-    sendMethod = request.content.sendMethod
-    weight = request.content.weight
-    fromIndex = request.content.fromIndex
-    toIndex = request.content.toIndex
+    data = request.data.decode("utf-8")
+    sndrCtg = data.sndrCtg
+    product = data.product
+    mailCat = data.mailCat
+    sendMethod = data.sendMethod
+    weight = data.weight
+    fromIndex = data.fromIndex
+    toIndex = data.toIndex
 
     contract, dimension, value, toCountry, postMark = None, None, None, None, None
 
     try:
-        contract = request.data.contract
+        contract = data.contract
     except:
         pass
     
     try:
-        dimension = request.data.dimension
+        dimension = data.dimension
     except:
         pass
     
     try:
-        value = request.data.value
+        value = data.value
     except:
         pass
     
     try:
-        toCountry = request.data.toCountry
+        toCountry = data.toCountry
     except:
         pass
     
     try:
-        postMark = request.data.postMark
+        postMark = data.postMark
     except:
         pass
     
 
-    isTest = request.data.isTestQuery == 1
+    isTest = data.isTestQuery == 1
 
     xml = query_getDeliveryTarifInfoXML(sndrCtg, product, mailCat, sendMethod, weight, fromIndex, toIndex, contract, dimension, value, toCountry, postMark)
 
