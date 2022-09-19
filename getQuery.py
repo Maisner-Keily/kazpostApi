@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import xml.etree.ElementTree as xml
 
-def query_getDeliveryTarifInfoXML(sndrCtg: int, product: str, mailCat: int, sendMethod: int, weight: int, from_: int, to_: int, contract='', dimension='', value=0, toCountry='', postMark=''):
+def query_getDeliveryTarifInfoXML(sndrCtg: int, product: str, mailCat: int, sendMethod: int, weight: int, fromIndex: int, toIndex: int, contract='', dimension='', value=0, toCountry='', postMark=''):
     xml.register_namespace('soapenv', 'http://schemas.xmlsoap.org/soap/envelope/')
     xml.register_namespace('pos', 'http://webservices.kazpost.kz/postratesws')
     root = xml.Element("{http://schemas.xmlsoap.org/soap/envelope/}Envelope")
@@ -31,10 +31,10 @@ def query_getDeliveryTarifInfoXML(sndrCtg: int, product: str, mailCat: int, send
     Weight.text = str(weight)
     
     From = xml.SubElement(GetPostRateInfo, "{http://webservices.kazpost.kz/postratesws}From")
-    From.text = str(from_)
+    From.text = str(fromIndex)
 
     To = xml.SubElement(GetPostRateInfo, "{http://webservices.kazpost.kz/postratesws}To")
-    To.text = str(to_)
+    To.text = str(toIndex)
 
     if (contract):
         Contract = xml.SubElement(GetPostRateInfo, "{http://webservices.kazpost.kz/postratesws}Contract")
