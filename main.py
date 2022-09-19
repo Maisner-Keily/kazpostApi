@@ -11,43 +11,43 @@ app.debug = False
 def index():
     data = json.loads(request.data)
     print(data)
-    sndrCtg = data.sndrCtg
-    product = data.product
-    mailCat = data.mailCat
-    sendMethod = data.sendMethod
-    weight = data.weight
-    fromIndex = data.fromIndex
-    toIndex = data.toIndex
+    sndrCtg = data["sndrCtg"]
+    product = data["product"]
+    mailCat = data["mailCat"]
+    sendMethod = data["sendMethod"]
+    weight = data["weight"]
+    fromIndex = data["fromIndex"]
+    toIndex = data["toIndex"]
 
     contract, dimension, value, toCountry, postMark = None, None, None, None, None
 
     try:
-        contract = data.contract
+        contract = data["contract"]
     except:
         pass
     
     try:
-        dimension = data.dimension
+        dimension = data["dimension"]
     except:
         pass
     
     try:
-        value = data.value
+        value = data["value"]
     except:
         pass
     
     try:
-        toCountry = data.toCountry
+        toCountry = data["toCountry"]
     except:
         pass
     
     try:
-        postMark = data.postMark
+        postMark = data["postMark"]
     except:
         pass
     
 
-    isTest = data.isTestQuery == 1
+    isTest = data["isTestQuery"] == 1
 
     xml = query_getDeliveryTarifInfoXML(sndrCtg, product, mailCat, sendMethod, weight, fromIndex, toIndex, contract, dimension, value, toCountry, postMark)
 
