@@ -1,3 +1,4 @@
+import json
 from flask import Flask, request, make_response
 
 from getQuery import query_getDeliveryTarifInfoXML
@@ -8,7 +9,7 @@ app.debug = False
 
 @app.route('/api/getDeliveryTarivInfo', methods=['GET', 'POST'])
 def index():
-    data = request.data.decode("utf-8")
+    data = json.dumps(request.data.decode("utf-8"))
     sndrCtg = data.sndrCtg
     product = data.product
     mailCat = data.mailCat
