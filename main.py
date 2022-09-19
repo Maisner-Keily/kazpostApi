@@ -5,13 +5,11 @@ app = Flask(__name__)
 app.debug = True
 
 @app.route('/', methods=['GET', 'POST'])
-def index(response):
-    data = response.body
-    with open('./logs.txt', 'a', encoding='utf-8') as fl:
-        fl.write("getted")
+def index():
+    print(request.data)
 
-    return make_response('sad', status_code=200)
+    return make_response({'sad': 'sad'})
 
 
 if (__name__ == "__main__"):
-    app.run(port=8000)
+    app.run(host="109.68.212.121", port=80)
