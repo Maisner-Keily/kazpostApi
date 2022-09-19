@@ -6,8 +6,9 @@ from getters import getDeliveryTarifXML
 app = Flask(__name__)
 app.debug = False
 
-@app.route('/', methods=['GET', 'POST'])
+@app.route('/api/getDeliveryTarivInfo', methods=['GET', 'POST'])
 def index():
+    a = request.json.sndrCtg
     sndrCtg = request.data.sndrCtg
     product = request.data.product
     mailCat = request.data.mailCat
