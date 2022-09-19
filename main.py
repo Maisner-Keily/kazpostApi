@@ -8,14 +8,15 @@ app.debug = False
 
 @app.route('/api/getDeliveryTarivInfo', methods=['GET', 'POST'])
 def index():
-    a = request.json.sndrCtg
-    sndrCtg = request.data.sndrCtg
-    product = request.data.product
-    mailCat = request.data.mailCat
-    sendMethod = request.data.sendMethod
-    weight = request.data.weight
-    fromIndex = request.data.fromIndex
-    toIndex = request.data.toIndex
+    print(request.data.decode("utf-8"))
+    return 'ok'
+    sndrCtg = request.content.sndrCtg
+    product = request.content.product
+    mailCat = request.content.mailCat
+    sendMethod = request.content.sendMethod
+    weight = request.content.weight
+    fromIndex = request.content.fromIndex
+    toIndex = request.content.toIndex
 
     contract, dimension, value, toCountry, postMark = None, None, None, None, None
 
